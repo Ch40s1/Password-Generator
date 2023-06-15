@@ -16,57 +16,49 @@ let specials = confirm("Specials?");
  let finalFinal = generatePlz(userLength,number, upperChar, lowerChar, specials);
  console.log(finalFinal);
 
+
+
  //function called in final password with the arguments
 function generatePlz(userLength,number, upperChar, lowerChar, specials) {
   //finalPassword is empty for now
   let finalPassword = "";
-  //contains characters for final password
-  let charset =[];
-//checks to see if the user clicked ok 
+
+  //contains combined arrays after choices
+  let arrayChecklist =[];
+
+    //checks to see if the user clicked ok 
     if (upperChar) {
-      charset = charset.concat(upperCase);
+      //concat merges 2 arrays: Note it merges the whole!! array.
+      arrayChecklist = arrayChecklist.concat(upperCase);
     }
     if (lowerChar) {
-      charset = charset.concat(lowerCase);
+      arrayChecklist = arrayChecklist.concat(lowerCase);
     }
     if (number) {
-      charset = charset.concat(numeric);
+      arrayChecklist = arrayChecklist.concat(numeric);
     }
     if (specials) {
-      charset = charset.concat(specialChar);
+      arrayChecklist = arrayChecklist.concat(specialChar);
     }
-//the for loop generates password based on the random generator and concats 
+    //picks characters inside the charset array based on the number of characters the user specified.
     for(let i = 0; i < userLength; i++){
-      let randomIndex = Math.floor(Math.random() * charset.length);
-      finalPassword += charset[randomIndex];
+      let pickedCharacters = Math.floor(Math.random() * arrayChecklist.length);
+      finalPassword += arrayChecklist[pickedCharacters];
   }
+  console.log(arrayChecklist);
   return finalPassword;
 }
 
-
+console.log(finalFinal);
 // var finalPassword = "";
 //   for (var i = 1; i<= userLength; i++ )
 //      finalPassword += upperCase[i];
-console.log(finalFinal);
+// console.log(finalPassword);
 // let i = Math.floor(Math.random() * upperCase.length);
-
-
-
-
-
-// option for length, has to be within
-// has to be within 8-128 characters
-
-//ask for character types
-
-// should evaluate if there are at something written
-
-//option for lowercase or upper, numeric or special
-
-
-//pasdword generated matches criteria
-
-//password is written in page
+// for(let i = 0; i < userLength; i++){
+//   let pickedCharacters = Math.floor(Math.random() * arrayChecklist.length);
+//   finalPassword += arrayChecklist[pickedCharacters];
+// }
 
 
 
