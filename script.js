@@ -2,6 +2,31 @@
 
 // generate prompts a series of criteria
 
+const upperCase = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+const lowerCase = ['a','b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+const numeric = ['0','1','2','3','4','5','6','7','8','9']
+const specialChar = ['!', '@', '#', '$', '%', '^', '&', '*', '-', '_', '+', '=', '~', '.', ',', ':', ';', '?'];
+
+let userLength = parseInt(prompt("how many letters?"));
+let checkList = [upperCase, lowerCase, numeric, specialChar];
+
+var finalPassword = "";
+
+  for (let i = 0; i<= userLength; i++ ){
+    let y = Math.floor(Math.random() * upperCase.length);
+    finalPassword += upperCase[y];
+  }
+
+// var finalPassword = "";
+//   for (var i = 1; i<= userLength; i++ )
+//      finalPassword += upperCase[i];
+console.log(finalPassword);
+// let i = Math.floor(Math.random() * upperCase.length);
+
+
+
+
+
 // option for lenght, has to be within
     // has to be within 8-128 characters
 
