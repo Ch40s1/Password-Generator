@@ -8,18 +8,20 @@ const numeric = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 const specialChar = ['!', '@', '#', '$', '%', '^', '&', '*', '-', '_', '+', '=', '~', '.', ',', ':', ';', '?'];
 
 let userLength = parseInt(prompt("how many letters?"));
+
+
 let number = confirm("Numbers?");
 let upperChar = confirm("Capitals?");
 let lowerChar = confirm("Lower?");
 let specials = confirm("Specials?");
 //final password. calling a function
- let finalFinal = generatePlz(userLength,number, upperChar, lowerChar, specials);
- console.log(finalFinal);
+//  let finalFinal = generatePlz(userLength,number, upperChar, lowerChar, specials);
+//  console.log(finalFinal);
 
 
 
  //function called in final password with the arguments
-function generatePlz(userLength,number, upperChar, lowerChar, specials) {
+function generatePassword(userLength,number, upperChar, lowerChar, specials) {
   //finalPassword is empty for now
   let finalPassword = "";
 
@@ -44,12 +46,20 @@ function generatePlz(userLength,number, upperChar, lowerChar, specials) {
     for(let i = 0; i < userLength; i++){
       let pickedCharacters = Math.floor(Math.random() * arrayChecklist.length);
       finalPassword += arrayChecklist[pickedCharacters];
-  }
-  console.log(arrayChecklist);
+    }
+    
+    if(
+      (number && !finalPassword.match(/[0-9]/)) ||
+      (upperChar && !finalPassword.match(/[A-Z]/)) ||
+      (lowerChar && !finalPassword.match(/[a-z]/)) ||
+      (specials && !finalPassword.match(/[!@#$%^&*-_+=~.,:;?]/))
+    ){
+      return generatePlz(userLength,number, upperChar, lowerChar, specials);
+    }
   return finalPassword;
 }
-
-console.log(finalFinal);
+// var generatePassword = finalFinal
+// console.log(finalFinal);
 // var finalPassword = "";
 //   for (var i = 1; i<= userLength; i++ )
 //      finalPassword += upperCase[i];
@@ -84,7 +94,7 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  var password = generatePassword(userLength,number, upperChar, lowerChar, specials);
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
