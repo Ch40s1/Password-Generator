@@ -1,7 +1,5 @@
 // Assignment code here
-
-// generate prompts a series of criteria
-
+//Arrays containing all combinations.
 const upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 const lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 const numeric = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -28,6 +26,12 @@ function getSize(){
   return characterLength;
 
 }
+// function optionsExist(){
+//   if (!(number && upperChar && lowerChar && specials)){
+//     alert("Not enough options, please select one.")
+
+//   }
+// }
 
 
  //function called in final password with the arguments
@@ -111,6 +115,12 @@ function writePassword() {
   let upperChar = confirm("Capitals?");
   let lowerChar = confirm("Lower?");
   let specials = confirm("Specials?");
+
+  if (!number && !upperChar && !lowerChar && !specials) {
+    alert("Please select at least one character type.");
+    return; // Exit the function without generating a password
+  }
+
   var password = generatePassword(userLength,number, upperChar, lowerChar, specials);
   var passwordText = document.querySelector("#password");
 
