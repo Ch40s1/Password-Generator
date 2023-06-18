@@ -7,21 +7,33 @@ const lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', '
 const numeric = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 const specialChar = ['!', '@', '#', '$', '%', '^', '&', '*', '-', '_', '+', '=', '~', '.', ',', ':', ';', '?'];
 
-let userLength = parseInt(prompt("how many letters?"));
+// let userLength = parseInt(prompt("how many letters?"));
 
+  // let userLength = getSize();
+  // let number = confirm("Numbers?");
+  // let upperChar = confirm("Capitals?");
+  // let lowerChar = confirm("Lower?");
+  // let specials = confirm("Specials?");
 
-let number = confirm("Numbers?");
-let upperChar = confirm("Capitals?");
-let lowerChar = confirm("Lower?");
-let specials = confirm("Specials?");
-//final password. calling a function
-//  let finalFinal = generatePlz(userLength,number, upperChar, lowerChar, specials);
-//  console.log(finalFinal);
+  //final password. calling a function
+  //  let finalFinal = generatePlz(userLength,number, upperChar, lowerChar, specials);
+  //  console.log(finalFinal);
 
+function getSize(){
+  let characterLength = parseInt(prompt("how many letters?"));
+  if (characterLength < 8 || characterLength > 128){
+    alert("plz at least 8");
+    return getSize(characterLength);
+  }
+  return characterLength;
+
+}
 
 
  //function called in final password with the arguments
 function generatePassword(userLength,number, upperChar, lowerChar, specials) {
+
+  
   //finalPassword is empty for now
   let finalPassword = "";
 
@@ -54,7 +66,7 @@ function generatePassword(userLength,number, upperChar, lowerChar, specials) {
       (lowerChar && !finalPassword.match(/[a-z]/)) ||
       (specials && !finalPassword.match(/[!@#$%^&*-_+=~.,:;?]/))
     ){
-      return generatePlz(userLength,number, upperChar, lowerChar, specials);
+      return generatePassword(userLength,number, upperChar, lowerChar, specials);
     }
   return finalPassword;
 }
@@ -94,6 +106,11 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
+  let userLength = getSize();
+  let number = confirm("Numbers?");
+  let upperChar = confirm("Capitals?");
+  let lowerChar = confirm("Lower?");
+  let specials = confirm("Specials?");
   var password = generatePassword(userLength,number, upperChar, lowerChar, specials);
   var passwordText = document.querySelector("#password");
 
