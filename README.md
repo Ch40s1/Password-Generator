@@ -1,8 +1,8 @@
 # Password-Generator
-This project was made to showcase a password generator that can take user input and generate a password. 
+This project was made to showcase a password generator that can take user input and print into a text block. 
 
 ## Link
-https://ch40s1.github.io/My-Portfolio/
+https://ch40s1.github.io/Password-Generator/
 
 ### To View
 1. Click the link and try it out  
